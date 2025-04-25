@@ -1,0 +1,23 @@
+<audio id="bgMusic" autoplay loop>
+    <source src="nhac.mp3" type="audio/mpeg" />
+  </audio>
+  <script>
+    const music = document.getElementById("bgMusic");
+
+        // Đọc vị trí lưu trong localStorage nếu có
+    const savedTime = parseFloat(localStorage.getItem("musicTime")) || 0;
+    if (document.referrer.includes("index.html")) {
+        localStorage.setItem("musicTime", 0);
+      }
+    music.currentTime = savedTime;
+
+        // Lưu lại vị trí phát mỗi 1 giây
+    music.addEventListener("timeupdate", () => {
+    localStorage.setItem("musicTime", music.currentTime);
+        });
+    // Auto play sau tương tác nếu bị chặn
+    document.addEventListener("click", () => {
+      const music = document.getElementById("bgMusic");
+      music.play().catch(err => console.log("Autoplay blocked", err));
+    }, { once: true });
+  </script>

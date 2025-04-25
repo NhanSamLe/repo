@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Selection</title>
+    <link rel="stylesheet" href="css/food.css" />
+    <style>
+      /* Thêm phong cách cho thông báo cute */
+      .cute-alert {
+        padding: 20px;
+        background-color: #ffcccb;
+        color: #ff6f61;
+        border-radius: 15px;
+        border: 2px solid #ff6f61;
+        width: 300px;
+        text-align: center;
+        font-family: 'Arial', sans-serif;
+        font-size: 18px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        display: none;
+        position: fixed;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+      }
+
+      .cute-alert button {
+        background-color: #ff6f61;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .cute-alert button:hover {
+        background-color: #ff4f40;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe src="music.html" style="display:none;" allow="autoplay"></iframe>
+    <div id="foodquestion">
+      <b>Đài muốn ăn món gì?</b>
+    </div>
+
+    <div class="food-selection">
+      <div class="food-item">
+        <img src="food/burgers.jpeg" alt="Burgers, fries and fried chicken" />
+        <label
+          ><input
+            type="checkbox"
+            name="food"
+            value="Burgers, fries and fried chicken"
+          />
+          Hamburger và gà rán</label
+        >
+      </div>
+      <div class="food-item">
+        <img src="food/dog.jpeg" alt="dog" />
+        <label
+          ><input type="checkbox" name="food" value="hotdog" /> Ăn gì cũng được</label
+        >
+      </div>
+      <div class="food-item">
+        <img src="food/koreanfood.jpeg" alt="koreanfood" />
+        <label
+          ><input type="checkbox" name="food" value="Korean food" /> Đồ Hàn quốc</label
+        >
+      </div>
+      <div class="food-item">
+        <img src="food/pasta.jpeg" alt="pasta" />
+        <label><input type="checkbox" name="food" value="pasta" /> Mì ý</label>
+      </div>
+      <div class="food-item">
+        <img src="food/pizza.jpeg" alt="pizza" />
+        <label><input type="checkbox" name="food" value="pizza" /> Pizza</label>
+      </div>
+      <div class="food-item">
+        <img src="food/salad.jpeg" alt="salad" />
+        <label><input type="checkbox" name="food" value="salad" /> Đồ Nướng</label>
+      </div>
+    </div>
+    <button class="button" onclick="checkSelection()">
+      Tiếp UWU
+    </button>
+
+    <!-- Cute alert message -->
+    <div id="cuteAlert" class="cute-alert">
+      <p>Chọn 1 món đi nà</p>
+      <button onclick="closeAlert()">hihi!!!</button>
+    </div>
+
+    <script>
+      function checkSelection() {
+        // Lấy tất cả checkbox với tên "food"
+        var selectedFoods = document.querySelectorAll('input[name="food"]:checked');
+
+        // Kiểm tra nếu không có món ăn nào được chọn
+        if (selectedFoods.length === 0) {
+          document.getElementById('cuteAlert').style.display = 'block';
+        } else {
+          // Nếu có chọn món, chuyển sang trang dessert.html
+          location.href = 'dessert.html';
+        }
+      }
+
+      // Đóng thông báo cute
+      function closeAlert() {
+        document.getElementById('cuteAlert').style.display = 'none';
+      }
+    </script>
+  </body>
+</html>
